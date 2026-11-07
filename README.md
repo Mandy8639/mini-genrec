@@ -4,6 +4,29 @@ A weekend-sized, **unfine-tuned** experiment inspired by [GenRec: Towards LLM-Na
 
 Netflix trains a foundation model and a catalog scoring head together, then scores without decoding recommendations. This repo uses off-the-shelf models through OpenAI or OpenRouter to **generate a candidate ranking**, with a code-enforced catalog gate. It reproduces the context and measurement ideas, not Netflix's architecture, training, serving costs, or claimed performance.
 
+## Main result
+
+**Keep the popularity + item-CF baseline as the default.** On the same 34 MovieLens users and 50 candidates per user, Dots reranking of the baseline's top 20 raised MRR from **0.2220 to 0.2486**, while Hit@10 fell from **50.0% to 44.1%**. The paired 95% bootstrap interval for the Hit@10 change ran from −20.6 to +11.8 percentage points. The shortlist included the held-out movie for 24 of 34 users, with no targets inserted. This small, exploratory comparison missed the predeclared Hit@10 threshold for adopting the reranker. [Reranking report](results/shortlist/report.md)
+
+## Reproduce without an API key
+
+Open the [saved viewer](results/frozen-evaluation/viewer.html) locally to inspect the LLM rankings without installing anything. To reproduce the baseline and audit the saved responses, run these commands from the repository root. Installation, the first MovieLens download, and the first tokenizer load may need internet access.
+
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+scratch=$(mktemp -d)
+python -c 'from pathlib import Path; from mini_genrec.data import download; download(Path("data"))'
+python -m mini_genrec.experiment --dry-run
+python -m mini_genrec.experiment --baseline-only --output "$scratch/baselines"
+python -m mini_genrec.analysis --results results/frozen-evaluation
+python -m mini_genrec.viewer --output "$scratch/viewer.html"
+python -m unittest discover -s tests
+```
+
+The frozen baseline run writes fresh artifacts to the temporary directory. The audit replays archived responses and checks their metrics. The [matched 21-user history sweep](results/frozen-evaluation/elbow.png) compares MRR against estimated input tokens for 5, 10, 20 and 50 events. Request or parse failures prevented either model from meeting the rule for declaring an elbow. [History sweep CSV](results/frozen-evaluation/elbow.csv)
+
 ## Frozen experiment inputs
 
 Open the [offline results viewer](results/frozen-evaluation/viewer.html) in a browser. On GitHub, download the HTML file first. It needs no server, API key, or network access. Select a user, switch history conditions, and reveal the held-out movie; the example buttons highlight disagreements between the rankers. Rebuild the single-file viewer from the saved artifacts with `python -m mini_genrec.viewer` in the project environment.
