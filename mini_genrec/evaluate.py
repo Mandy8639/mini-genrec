@@ -13,7 +13,7 @@ import re
 from dotenv import load_dotenv
 import numpy as np
 import pandas as pd
-from openai import (APIError, AuthenticationError, BadRequestError, NotFoundError,
+from openai import (APIError, APIConnectionError, APITimeoutError, AuthenticationError, BadRequestError, NotFoundError,
                     PermissionDeniedError, UnprocessableEntityError)
 
 from .baseline import Baseline
@@ -23,6 +23,16 @@ from .llm import LLM, RequestBudget, RunPaused, parse_response, validate
 from .report import write_report
 
 LENGTHS = (5, 10, 20, 50)
+
+
+class ConfigurationFailure(SystemExit):
+    """A sanitized fatal API failure, retaining only status and classification."""
+
+    def __init__(self, category, http_status):
+        super().__init__("API authentication, permission, model or request configuration failed. "
+                         "Check credentials/model. Completed users and cached responses are preserved.")
+        self.category = category
+        self.http_status = http_status
 
 
 def metrics(ranking: list[int], target: int, popular: set[int]) -> dict:
@@ -66,6 +76,12 @@ def summarize(rows: pd.DataFrame, expected_users: int) -> pd.DataFrame:
             "errors": int((group.error != "").sum()),
             "truncated_responses": int((group.response_finish_reason == "length").sum())
                 if "response_finish_reason" in group else 0,
+            "mean_candidate_coverage": float(group.candidate_coverage.mean())
+                if "candidate_coverage" in group and group.candidate_coverage.notna().any() else None,
+            "incomplete_rankings": int((group.candidate_coverage < 1).sum())
+                if "candidate_coverage" in group else 0,
+            "failure_categories": json.dumps(group.loc[group.error != "", "error_category"].value_counts().to_dict(), sort_keys=True)
+                if "error_category" in group else "{}",
         })
     return pd.DataFrame(records)
 
@@ -170,8 +186,9 @@ def run(args, request_budget=None) -> pd.DataFrame:
     return summary
 
 
-def evaluate_llm(llm, prompt, common, dataset, case, ranker) -> dict:
-    row = dict(common, ranker=ranker, ranking=[])
+def evaluate_llm(llm, prompt, common, dataset, case, ranker, decode=None) -> dict:
+    row = dict(common, ranker=ranker, ranking=[], error_category="", http_status=None,
+               candidate_count=len(case.candidates), candidate_coverage=None)
     try:
         response = llm.call(prompt)
         row.update(api_input_tokens=response["prompt_tokens"],
@@ -179,21 +196,54 @@ def evaluate_llm(llm, prompt, common, dataset, case, ranker) -> dict:
                    response_model=response["model"], request_hash=response["request_hash"])
         row.update(response_finish_reason=response.get("finish_reason"),
                    response_content_characters=len(response.get("content") or ""))
+        if response.get("refusal"):
+            row["error_category"] = "refusal"
+        elif response.get("finish_reason") != "stop":
+            row["error_category"] = "truncation" if response.get("finish_reason") == "length" else "finish_reason"
         row.update(latency_seconds=response.get("latency_seconds"),
                    response_provider=response.get("provider"), response_backend=response.get("backend"),
                    api_reasoning_tokens=response.get("reasoning_tokens"),
                    api_cost_usd=response.get("cost_usd"), response_id=response.get("response_id"))
-        validated = validate(parse_response(response), dataset.movies, case.candidates,
-                             unconstrained=ranker == "unconstrained")
+        validated = (decode(response, dataset, case) if decode else
+                     validate(parse_response(response), dataset.movies, case.candidates,
+                              unconstrained=ranker == "unconstrained"))
         row.update(asdict(validated))
+        if ranker != "unconstrained":
+            row["candidate_coverage"] = len(validated.ranking) / len(case.candidates)
     except (AuthenticationError, BadRequestError, NotFoundError, PermissionDeniedError,
-            UnprocessableEntityError):
+            UnprocessableEntityError) as error:
+        body = error.body
+        upstream_rejection = (getattr(llm, "backend", None) == "openrouter"
+                              and isinstance(error, (BadRequestError, UnprocessableEntityError))
+                              and isinstance(body, dict)
+                              and body.get("message") == "Provider returned error"
+                              and isinstance(body.get("metadata"), dict)
+                              and bool(body["metadata"].get("provider_name")))
+        if upstream_rejection:
+            # A provider can reject one otherwise valid input. Keep it in the denominator.
+            # Do not store the upstream body, which may contain sensitive metadata.
+            row.update(error=type(error).__name__, error_category="provider_rejection",
+                       http_status=error.status_code,
+                       candidate_coverage=None if ranker == "unconstrained" else 0.0)
+            row.update(metrics(row["ranking"], case.target, dataset.popular))
+            return row
         # Stop on invalid credentials/model/schema rather than issuing repeated billable calls.
-        raise SystemExit("API authentication, permission, model or request configuration failed. "
-                         "Check credentials/model. Completed users and cached responses are preserved.") from None
+        category = ("authentication" if isinstance(error, AuthenticationError) else
+                    "permission" if isinstance(error, PermissionDeniedError) else
+                    "model_or_endpoint" if isinstance(error, NotFoundError) else "configuration")
+        raise ConfigurationFailure(category, getattr(error, "status_code", None)) from None
     except (APIError, ValueError, KeyError, TypeError) as error:
         # Do not log exception text: SDK errors can contain credentials or request headers.
         row["error"] = type(error).__name__
+        row["http_status"] = getattr(error, "status_code", None)
+        if not row["error_category"]:
+            row["error_category"] = (
+                "timeout" if isinstance(error, APITimeoutError) else
+                "connection" if isinstance(error, APIConnectionError) else
+                "http" if isinstance(error, APIError) else
+                "json" if isinstance(error, json.JSONDecodeError) else "response_schema")
+        if ranker != "unconstrained":
+            row["candidate_coverage"] = 0.0
     row.update(metrics(row["ranking"], case.target, dataset.popular))
     return row
 

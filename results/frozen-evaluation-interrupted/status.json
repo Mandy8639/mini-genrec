@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "run_id": "69607ee1efe9abb0",
+  "mode": "api",
+  "error_category": "configuration",
+  "http_status": 400,
+  "completed_llm_conditions": 237
+}

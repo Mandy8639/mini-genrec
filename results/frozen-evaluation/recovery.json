@@ -1,0 +1,20 @@
+{
+  "initial_run_id": "69607ee1efe9abb0",
+  "recovered_run_id": "b5dfd418763a4381",
+  "initial_status": {
+    "status": "failed",
+    "run_id": "69607ee1efe9abb0",
+    "mode": "api",
+    "error_category": "configuration",
+    "http_status": 400,
+    "completed_llm_conditions": 237
+  },
+  "initial_uncached_attempts": 237,
+  "initial_failed_invocations": 2,
+  "replayed_conditions_verified_identical": 237,
+  "initial_checkpoint_sha256": "5073c73b097b441a176d55f0255514b40f4d7e5729f72a7bf456fc2e474b97a6",
+  "changed_runner_sources": [
+    "evaluate.py"
+  ],
+  "change": "Distinguish an OpenRouter upstream provider rejection from a fatal configuration error; rejected conditions remain in evaluation with zero rank scores. Cohorts, prompts, model settings and scored cached outcomes did not change."
+}
