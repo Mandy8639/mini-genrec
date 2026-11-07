@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "algorithm": "sha256",
+  "files": {
+    "MOVIELENS_README.txt": "63d22ac138e80fae37021797ed8e1b9424b5239dc576a137422adf783ae3f404",
+    "README.md": "bc20a0c99095008497e00bfe55ddd4dad920c2262fbf54f0625bf02d2fde0916",
+    "cases.json": "1a9daa2e135e2361cc1fc50739a2a3d140b30ec3064c77ed2439c65c9a0b32bc",
+    "catalog.json": "5bae1c75ec7123cbd15374c8e5311b4c4dbb2286c0f2599e7d346c7e436ea2d0",
+    "cohorts.json": "b43df1da6b0cea9ad76e3ab3b8a6e45a89194d7d0636a260645a1ab40f6deb0b",
+    "config.json": "11f8221da025fc686f707802557b4b5791ac49699328af348e29d75ec5962b01",
+    "prompt_examples.json": "5e63c933358ef590d721e8db63a4be8f387357e3b1ca96c7f20416faf2a02c59",
+    "prompt_fingerprints.json": "f4ebcfc91e28feef27fec76253d72c66dba048b617a0918baceefcb0d2e08826"
+  }
+}

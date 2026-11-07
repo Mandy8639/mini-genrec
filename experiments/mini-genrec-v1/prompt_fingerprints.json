@@ -1,0 +1,1490 @@
+{
+  "schema_version": 1,
+  "applies_to_models": [
+    "nvidia/nemotron-3.5-super-vl:free",
+    "dots-studio/dots-3-note-preview:free"
+  ],
+  "message_serialization": "UTF-8 JSON, sort_keys=true, ensure_ascii=false, separators=(comma,colon).",
+  "fingerprints": [
+    {
+      "user_id": 41,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "f5469272efbd588af6be6ba1a6ba7e47c97160becbfb68c9aea18fa0bee9b30f",
+      "approx_input_tokens": 2123,
+      "retained_history_events": 4
+    },
+    {
+      "user_id": 41,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "b384570196078d917ff2989a966f52872a9840ba2c0649b8d2af4aa75c20dcd0",
+      "approx_input_tokens": 2238,
+      "retained_history_events": 8
+    },
+    {
+      "user_id": 41,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "0201a80043ff4281aff2e14d8953742387c8944c1da731341f02b9f8ea1fd1ba",
+      "approx_input_tokens": 2469,
+      "retained_history_events": 16
+    },
+    {
+      "user_id": 41,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "dd298c63d750ed2c8f31ea93f25a0e3a8a998d231689752fdf2949b00e09bc29",
+      "approx_input_tokens": 2998,
+      "retained_history_events": 36
+    },
+    {
+      "user_id": 41,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "62e10a853f1e2455c9eefbe91b54bb263e7c255dc68815da84b12e342ced4985",
+      "approx_input_tokens": 713,
+      "retained_history_events": 16
+    },
+    {
+      "user_id": 47,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "0e08176ce78ea28d75d6dcec3b32827486fbc16c490ffcc578cbbcfea3e5e00f",
+      "approx_input_tokens": 2055,
+      "retained_history_events": 3
+    },
+    {
+      "user_id": 47,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "9f10a0146494195e8c9e75296790fa8b3c80c103b9f9b7e8da2805490af96734",
+      "approx_input_tokens": 2144,
+      "retained_history_events": 6
+    },
+    {
+      "user_id": 47,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "7df1dbc68b3d2bbd87c2f90dac1a4308640d27657a4d2104075bc3e7f520e03d",
+      "approx_input_tokens": 2273,
+      "retained_history_events": 10
+    },
+    {
+      "user_id": 47,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "c291999261b4207d1e6bf678dc8028fcaa6ab9b5c00980d0814425f70d1dbdb0",
+      "approx_input_tokens": 2549,
+      "retained_history_events": 20
+    },
+    {
+      "user_id": 47,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "b021f14b8a8f7a059fc87fea11ecae236fcfca2981bd0dcc31150eb115f927a4",
+      "approx_input_tokens": 570,
+      "retained_history_events": 10
+    },
+    {
+      "user_id": 50,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "8a4efab973a5299da3568ceb3836872bdb7eac386651fbfcfe558cec87745807",
+      "approx_input_tokens": 2124,
+      "retained_history_events": 3
+    },
+    {
+      "user_id": 50,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "8a4efab973a5299da3568ceb3836872bdb7eac386651fbfcfe558cec87745807",
+      "approx_input_tokens": 2124,
+      "retained_history_events": 3
+    },
+    {
+      "user_id": 50,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "8a4efab973a5299da3568ceb3836872bdb7eac386651fbfcfe558cec87745807",
+      "approx_input_tokens": 2124,
+      "retained_history_events": 3
+    },
+    {
+      "user_id": 50,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "8ad7a7394fe6dd1e78d0bddcb39964797c10bb35df9610629bff7218a60ed8b0",
+      "approx_input_tokens": 2530,
+      "retained_history_events": 17
+    },
+    {
+      "user_id": 50,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "6298b33d72be60e3f894a0ee5c913f1fcc6529f64bc6c9992509b786d393a5d4",
+      "approx_input_tokens": 342,
+      "retained_history_events": 3
+    },
+    {
+      "user_id": 62,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "d61e0d9f10c7b665a52571e3fe8a371fba77d52684c5314c77e8bad073b14cc9",
+      "approx_input_tokens": 2150,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 62,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "9fe6d21686217a16e990b97fadcc9c5ee95edae8a1093f3bf7e8876883bf0f23",
+      "approx_input_tokens": 2177,
+      "retained_history_events": 6
+    },
+    {
+      "user_id": 62,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "dff16fe568073a2583ee23f62566b5396d1aa1670b6f3825b9aa43c9678662d6",
+      "approx_input_tokens": 2272,
+      "retained_history_events": 9
+    },
+    {
+      "user_id": 62,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "b61ae13df599f3b933b07463eb2ea07d57da6db36751b7b67b0c506d5f0b96dd",
+      "approx_input_tokens": 2833,
+      "retained_history_events": 28
+    },
+    {
+      "user_id": 62,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "d29dc0094408190b139bb7a9ecae7005ba25cc59092bee7083f71fec464cb17b",
+      "approx_input_tokens": 538,
+      "retained_history_events": 9
+    },
+    {
+      "user_id": 65,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "f157819cd91b16520449c6e5678bdfbe512d293314c2d7640b457629ecb19750",
+      "approx_input_tokens": 2177,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 65,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "1c47e16a4aa9c49087bcb7074e8353f8546031230c6fddf337942f959c64d332",
+      "approx_input_tokens": 2266,
+      "retained_history_events": 8
+    },
+    {
+      "user_id": 65,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "0dcd906b85a2323600e5e002a2f2936820c160f738c207aa8ba160af98232c3c",
+      "approx_input_tokens": 2490,
+      "retained_history_events": 16
+    },
+    {
+      "user_id": 65,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "a2dc969ea3451b4b56a3ab148de7bb416386b47cfdb30239a5346d0ecbaaea53",
+      "approx_input_tokens": 2588,
+      "retained_history_events": 19
+    },
+    {
+      "user_id": 65,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "b0299ebae7d9fe5a2aa5c4e40cf47974899f0b8e045cba1c098eafa3266e59b9",
+      "approx_input_tokens": 730,
+      "retained_history_events": 16
+    },
+    {
+      "user_id": 67,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "899dd5b4a64340c26f4c5054268c195ead2f9fdf7c1ffa68d3c3a6e2fa35981d",
+      "approx_input_tokens": 2098,
+      "retained_history_events": 4
+    },
+    {
+      "user_id": 67,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "4e684c48f182ee42f525b2df74b71ac8576973dd92bc8e2db2951b9bdf9a344d",
+      "approx_input_tokens": 2200,
+      "retained_history_events": 7
+    },
+    {
+      "user_id": 67,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "ab4a5b21e3183e8fa56e9b99bf3c102b74cbf0f74c94a632f2f213080cf9fef5",
+      "approx_input_tokens": 2475,
+      "retained_history_events": 15
+    },
+    {
+      "user_id": 67,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "a5eb195b695830c610fcad41d7568f0c075ca9a64a67d639b384de8220ce222a",
+      "approx_input_tokens": 2719,
+      "retained_history_events": 23
+    },
+    {
+      "user_id": 67,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "04fb7d751d824aa693fd168022f07e1d2f9ed8efc66e1522f7111e34bfa98a97",
+      "approx_input_tokens": 759,
+      "retained_history_events": 15
+    },
+    {
+      "user_id": 77,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "3fab24d7279ae994f4f1fbbab4bbcde3a6a3b93d12071509c9c83632ac542b2a",
+      "approx_input_tokens": 2088,
+      "retained_history_events": 4
+    },
+    {
+      "user_id": 77,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "100818fa0a23c77bee8da22fccd33e4b88a211dbca47ac1af2ff709f0432c5f9",
+      "approx_input_tokens": 2218,
+      "retained_history_events": 8
+    },
+    {
+      "user_id": 77,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "98ec9ebbf332ecd27e6dbaf431c5a91116451664c4250a6ac637f639cee1fae5",
+      "approx_input_tokens": 2433,
+      "retained_history_events": 15
+    },
+    {
+      "user_id": 77,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "49cfe1063a9316c6ead1235581365ab44c14784eb33fed2a7fc960274f34dab2",
+      "approx_input_tokens": 2704,
+      "retained_history_events": 23
+    },
+    {
+      "user_id": 77,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "6b0c5c7975b117905938cd50739003d3079a47800ae9df45ae448610d46fdf07",
+      "approx_input_tokens": 725,
+      "retained_history_events": 15
+    },
+    {
+      "user_id": 103,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "1fb37601df4996735d9f0426b8528ea1fde3803589d3d45f416ef6f3eeb4f98d",
+      "approx_input_tokens": 2055,
+      "retained_history_events": 3
+    },
+    {
+      "user_id": 103,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "8ef5738eb0a7f555a8ae744459068bd8a81c108505c29e9816004f98a84802d7",
+      "approx_input_tokens": 2193,
+      "retained_history_events": 8
+    },
+    {
+      "user_id": 103,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "f9d1ba809b1c00b569e7a59c2fa19bee4fffc7575851798af52189b70c2e3bab",
+      "approx_input_tokens": 2482,
+      "retained_history_events": 18
+    },
+    {
+      "user_id": 103,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "80cfb1fb0c3ab806c24a7c2e63561fc82f55ad6d308eefc06d9a498696deeba2",
+      "approx_input_tokens": 3099,
+      "retained_history_events": 38
+    },
+    {
+      "user_id": 103,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "e23ddf6d1e91490e66b4f0415ac1599d2be8e1c626f21058a4bb215e397a2990",
+      "approx_input_tokens": 764,
+      "retained_history_events": 18
+    },
+    {
+      "user_id": 106,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "fa7e1d24c1f332b982627895a71cad57748c5220b35eea67d9969271fa7ee9c0",
+      "approx_input_tokens": 2090,
+      "retained_history_events": 4
+    },
+    {
+      "user_id": 106,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "d21e3003364bd2d64e40a935adc773cac2ce26bfd7ee2c0e35a87527d367dd09",
+      "approx_input_tokens": 2184,
+      "retained_history_events": 7
+    },
+    {
+      "user_id": 106,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "953f60c5a717821c5cabd38f1e98398c4a322e689f595ba6c53ec6492fea827d",
+      "approx_input_tokens": 2506,
+      "retained_history_events": 16
+    },
+    {
+      "user_id": 106,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "953f60c5a717821c5cabd38f1e98398c4a322e689f595ba6c53ec6492fea827d",
+      "approx_input_tokens": 2506,
+      "retained_history_events": 16
+    },
+    {
+      "user_id": 106,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "62ac4d6f645ec016ea122248a507b94e75254956e65b78af1bc3d05b0417bbb4",
+      "approx_input_tokens": 809,
+      "retained_history_events": 16
+    },
+    {
+      "user_id": 111,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "60f3f9abb3f79898095a3300932c296ed1e57f72da24379cc78bdd7374cbb956",
+      "approx_input_tokens": 1988,
+      "retained_history_events": 2
+    },
+    {
+      "user_id": 111,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "2890e72f77222679b85bf5eb49169c4f475511e1e40f4895685221e923c9adfa",
+      "approx_input_tokens": 2073,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 111,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "08e4f8d7979cc222c48ec1d8e849a3484489f2f3615cbd103aece4c552a03ce2",
+      "approx_input_tokens": 2219,
+      "retained_history_events": 10
+    },
+    {
+      "user_id": 111,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "1cba8949e44c9622c0e738d130edb108260c6a2eccce8204abd506149bea714f",
+      "approx_input_tokens": 2536,
+      "retained_history_events": 21
+    },
+    {
+      "user_id": 111,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "5147a48b1c9f8fe9ae6bae259a1adffcf8dfeb2b801e47fdfe97553370847497",
+      "approx_input_tokens": 539,
+      "retained_history_events": 10
+    },
+    {
+      "user_id": 112,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "71377bd84526859d269bb24dd152802842bbabe701ce362b413a65dc8a5be978",
+      "approx_input_tokens": 2071,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 112,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "2d371e96c899f680c5637e8632a043bd18e9dd2ebadda14fab3a7ff3393bcc71",
+      "approx_input_tokens": 2208,
+      "retained_history_events": 10
+    },
+    {
+      "user_id": 112,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "c75e50e4f6d74b598b6b638094c3a82c2095d9bcb67f081975c7cd1c2a79f658",
+      "approx_input_tokens": 2436,
+      "retained_history_events": 18
+    },
+    {
+      "user_id": 112,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "4a132c9bf4b83ea94e6950fe0bbc9ac1c76dd456a71aa67714191593e47fcf42",
+      "approx_input_tokens": 3192,
+      "retained_history_events": 44
+    },
+    {
+      "user_id": 112,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "7d31428135426928d67eea3c5be077a7f742f5039389b8ac2db89ec34f2b2a65",
+      "approx_input_tokens": 770,
+      "retained_history_events": 18
+    },
+    {
+      "user_id": 119,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "7f9a47f8b015d7caa9661e6fd3997835967bc0684085100e40607edd2f263ef7",
+      "approx_input_tokens": 2036,
+      "retained_history_events": 2
+    },
+    {
+      "user_id": 119,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "faf9ec41ed1819852142c788620fc76250a0c68e71b72de79667efbb5bcc1f5e",
+      "approx_input_tokens": 2121,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 119,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "14456fc6ce250e53a74405a2a3421d95ad010a2c353e08d3653decb6f782a8f0",
+      "approx_input_tokens": 2437,
+      "retained_history_events": 15
+    },
+    {
+      "user_id": 119,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "ef4558cd6f08538ffa0ba6d5cc3aa9fef07072806019a34d2e5270291069fb0b",
+      "approx_input_tokens": 3291,
+      "retained_history_events": 43
+    },
+    {
+      "user_id": 119,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "e845a760542db19761485b9106a2ef6cd5c24810873c877f76906c7a8b83b9dc",
+      "approx_input_tokens": 724,
+      "retained_history_events": 15
+    },
+    {
+      "user_id": 122,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "7616dd7f030268e1bb50747d66ec0315c5271605f83ba1e7a9f2c179c43950e7",
+      "approx_input_tokens": 2126,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 122,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "f1c424132d9da22a98a0f083466c8e5d906c983f502e052e115155d8a555233a",
+      "approx_input_tokens": 2274,
+      "retained_history_events": 10
+    },
+    {
+      "user_id": 122,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "268732cc12dda0a46b36dd88c37917523bc3242c09fbba6dad6e199675ae36ef",
+      "approx_input_tokens": 2535,
+      "retained_history_events": 20
+    },
+    {
+      "user_id": 122,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "5cbfe5fad924dfa63f4d45435ee0bbcfeca44854e8d6d9b1f6c8cc5bcd7b2e80",
+      "approx_input_tokens": 3378,
+      "retained_history_events": 49
+    },
+    {
+      "user_id": 122,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "4c9d50015fbef629a033424718f1baf7faeae459e49831ae9ebdc78e718d660f",
+      "approx_input_tokens": 802,
+      "retained_history_events": 20
+    },
+    {
+      "user_id": 148,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "3cced4502a87530023f06849ce43c21952de844282315db970803b9626a7f554",
+      "approx_input_tokens": 2104,
+      "retained_history_events": 2
+    },
+    {
+      "user_id": 148,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "4a7cda5ac75a0a22ad8ef9daf64fab7d849cf48421910ba1ce419ebea944c7e4",
+      "approx_input_tokens": 2222,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 148,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "1fa7ac9b7f394c3c56db0a8d3b58f17dd5f1003a050cd0919300072d8e1844dc",
+      "approx_input_tokens": 2415,
+      "retained_history_events": 11
+    },
+    {
+      "user_id": 148,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "4403ed4e835902e61390ada3b9834523680a824e6bc2d2501b940eace40b08d5",
+      "approx_input_tokens": 2584,
+      "retained_history_events": 16
+    },
+    {
+      "user_id": 148,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "ddf4009a48eb0ec0c95a8e98d3d8c7ede8451929ec5baf290c09ee9b7086a775",
+      "approx_input_tokens": 635,
+      "retained_history_events": 11
+    },
+    {
+      "user_id": 159,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "2c2ef3f33a0904274633b328ae4f7df7db50f4ae808e245975d116bafe231ee7",
+      "approx_input_tokens": 2116,
+      "retained_history_events": 4
+    },
+    {
+      "user_id": 159,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "045eaf8581054271b1a2abd8d8be8d82ed05e56a0ff384d5f623393ffe4dbaae",
+      "approx_input_tokens": 2179,
+      "retained_history_events": 6
+    },
+    {
+      "user_id": 159,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "80458c8d2f920725158a79f764617e7baf12e9d2835286b54a4910e0e39961f1",
+      "approx_input_tokens": 2345,
+      "retained_history_events": 12
+    },
+    {
+      "user_id": 159,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "4d3fde21e7920588d101743adce397c630a562c0a556ce536f735e293bea9713",
+      "approx_input_tokens": 2901,
+      "retained_history_events": 31
+    },
+    {
+      "user_id": 159,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "289803ac1af717d3cde21317806ecb68d304a167349269bed15bdd1b33972976",
+      "approx_input_tokens": 601,
+      "retained_history_events": 12
+    },
+    {
+      "user_id": 247,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "ffb797bf0a2f9a758545085e449dbfc15a9155d24ad0f3cde846724bcc9a7590",
+      "approx_input_tokens": 2115,
+      "retained_history_events": 4
+    },
+    {
+      "user_id": 247,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "da1ea750468e01ecb7ec19322079111d13d999c1150fd88ea56f63eb4fdd055f",
+      "approx_input_tokens": 2243,
+      "retained_history_events": 8
+    },
+    {
+      "user_id": 247,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "36687729d04ac050aa77fa83e8e1bf2d1c7a39298320a9aa721067639464b832",
+      "approx_input_tokens": 2486,
+      "retained_history_events": 16
+    },
+    {
+      "user_id": 247,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "235ae05f2b62acead4033483525a39054e59b630bfffb95fdeaa70d7ebcbf55c",
+      "approx_input_tokens": 2895,
+      "retained_history_events": 29
+    },
+    {
+      "user_id": 247,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "b4c79d06fcabfca2cf50f07c006b2c179f64ad023045aadb1503e4114fd07a95",
+      "approx_input_tokens": 758,
+      "retained_history_events": 16
+    },
+    {
+      "user_id": 282,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "18ce93e58e199e0cacdf4fd6f3653087cc11be6440e3c7962c4302ca147496fb",
+      "approx_input_tokens": 2087,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 282,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "629095a568883931b404acc2ac4d3ac060402c80620f35be6954d403c4704edb",
+      "approx_input_tokens": 2138,
+      "retained_history_events": 7
+    },
+    {
+      "user_id": 282,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "546755d3080837687a3fd5493213fbad85c6d52074500a1f300b40c3689c1766",
+      "approx_input_tokens": 2283,
+      "retained_history_events": 12
+    },
+    {
+      "user_id": 282,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "a6a4315bdaee98438c4cfc0772e7ebc291fe8c1f2ab4256ce107c143d2ab5e7b",
+      "approx_input_tokens": 2951,
+      "retained_history_events": 35
+    },
+    {
+      "user_id": 282,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "303867aa25ba4b8dc84a431b5fc3284c83f0ab1ee9dc7ee0e2e92cbd93d6c1f7",
+      "approx_input_tokens": 592,
+      "retained_history_events": 12
+    },
+    {
+      "user_id": 285,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "a4ea31f9caff07d37517a196e175214e7eab39478fb4fda0557923b3145f8a4f",
+      "approx_input_tokens": 2092,
+      "retained_history_events": 4
+    },
+    {
+      "user_id": 285,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "cea1a39d57cf0471794b4f0d3b6dfeda86f120a0e5d2b9bf56ec3c7ea3824cf1",
+      "approx_input_tokens": 2234,
+      "retained_history_events": 9
+    },
+    {
+      "user_id": 285,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "616c7a97d27b2bff0157213e49fa2d0b3e831c2995388f7a3be54783555d0432",
+      "approx_input_tokens": 2443,
+      "retained_history_events": 17
+    },
+    {
+      "user_id": 285,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "95db3ca4fe7ee2c2846d8e88f3d26c8978973339bac05ab3d60f7ebc311b444a",
+      "approx_input_tokens": 2585,
+      "retained_history_events": 22
+    },
+    {
+      "user_id": 285,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "3d7f83c7fc93e417a04c4a0d621831221f27454a831197b48bc73d0f90363cc0",
+      "approx_input_tokens": 713,
+      "retained_history_events": 17
+    },
+    {
+      "user_id": 326,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "39865c8891e55c7acd93ceb230e2b818382d5d744ca2db916a46082e45c1be03",
+      "approx_input_tokens": 2101,
+      "retained_history_events": 4
+    },
+    {
+      "user_id": 326,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "3aeeefea50ddc8f842c675186068542c777a74719048c342aeea949dec5876c6",
+      "approx_input_tokens": 2226,
+      "retained_history_events": 8
+    },
+    {
+      "user_id": 326,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "9adee500b2f5efbbe8eee63e326d9759e3c1d7977203753fd16148ed9d7ffb5a",
+      "approx_input_tokens": 2478,
+      "retained_history_events": 16
+    },
+    {
+      "user_id": 326,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "854b8445a6566f4cfddbf4b03f1dc38052331e37fbe4196d7dd7bd40cf42afaf",
+      "approx_input_tokens": 3058,
+      "retained_history_events": 34
+    },
+    {
+      "user_id": 326,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "76bf7e59c9d340f7f0b7c9c3633453af034a91fa59a4c2ca0f212aeda4fe81e0",
+      "approx_input_tokens": 741,
+      "retained_history_events": 16
+    },
+    {
+      "user_id": 328,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "3c6485ddb3b020c8dffd8f5e5f3dcf7067b39725c6457e9bdc42215ebd1d2987",
+      "approx_input_tokens": 2022,
+      "retained_history_events": 2
+    },
+    {
+      "user_id": 328,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "999d2fdd86596868a9f6d09a6239a4f4560a1cf7a46f55a2ef466dc53d9df06a",
+      "approx_input_tokens": 2155,
+      "retained_history_events": 6
+    },
+    {
+      "user_id": 328,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "6989bd41eef7530cd938f229397f6eab0dfe44b854d101b442f93d7e87579fce",
+      "approx_input_tokens": 2428,
+      "retained_history_events": 15
+    },
+    {
+      "user_id": 328,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "4c111e91055fb28b3fdadc75796bd50557bc2ff0083a1a343aceeec3e2e97446",
+      "approx_input_tokens": 2979,
+      "retained_history_events": 33
+    },
+    {
+      "user_id": 328,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "6bd016f30566db9f77213507cb5d39e657c1f8912d02901130a72ea7e91dcf1c",
+      "approx_input_tokens": 721,
+      "retained_history_events": 15
+    },
+    {
+      "user_id": 352,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "ed75141a642c9f811cbcba1b5342b9ced394c34cc0e0de8be777e18430b8a24b",
+      "approx_input_tokens": 2148,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 352,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "05fdeaa696943f6e6feded6f2ce47b6c2a6e9b5611a79c69b9fc666e2b603b18",
+      "approx_input_tokens": 2287,
+      "retained_history_events": 10
+    },
+    {
+      "user_id": 352,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "e3262c782a2bac0113bc0761135cb3fe8d668a073b083893554b95494748d128",
+      "approx_input_tokens": 2556,
+      "retained_history_events": 19
+    },
+    {
+      "user_id": 352,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "226fcb96b3467112d21f5b48bb0ca406c9d2cd63da41acdd8675c379df4c9639",
+      "approx_input_tokens": 3236,
+      "retained_history_events": 41
+    },
+    {
+      "user_id": 352,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "bcf104139c9633d5133ba926f9cfa25e5f5870408d3cad6c455ae75aa3328e80",
+      "approx_input_tokens": 808,
+      "retained_history_events": 19
+    },
+    {
+      "user_id": 382,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "8555f653b5c3c7226c36af4942673f7d411db3a21ee8cb3b445bdc3921219be0",
+      "approx_input_tokens": 2035,
+      "retained_history_events": 2
+    },
+    {
+      "user_id": 382,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "c4ca3ef50f75d2b230392779e04560ab68896e1e69574cb2ad2824a84ce7b06f",
+      "approx_input_tokens": 2072,
+      "retained_history_events": 3
+    },
+    {
+      "user_id": 382,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "c322ffab358a379f3eb2a56279a416611b0bd53d085b83be80e6c2fb15f37dc9",
+      "approx_input_tokens": 2135,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 382,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "0194e1b286c5c31ca97c1b6ba03830426104243c3831541caf0009488bcf8fad",
+      "approx_input_tokens": 2462,
+      "retained_history_events": 16
+    },
+    {
+      "user_id": 382,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "20b9ed99389e78b5ca13d062c2cbbf100b029f900024cdaca9208ba2e09c45ef",
+      "approx_input_tokens": 424,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 400,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "53464850087e25443ea1ce7b666c8a9b5706fee91277e2c69f6d3fc8177f2e3b",
+      "approx_input_tokens": 2182,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 400,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "f65e79c41c2e86e0f830b30fd2df8ea84d21818d5baae0761629b4493457a63c",
+      "approx_input_tokens": 2325,
+      "retained_history_events": 10
+    },
+    {
+      "user_id": 400,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "38ca396533ab200138310ef484f77422050346ea170a12d4dac1e40238920682",
+      "approx_input_tokens": 2662,
+      "retained_history_events": 20
+    },
+    {
+      "user_id": 400,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "828375c846acb4a9727c5529452495b5dbf539f72aa090d70b681e87b98d55c5",
+      "approx_input_tokens": 3151,
+      "retained_history_events": 36
+    },
+    {
+      "user_id": 400,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "1021b2f8ca42aca5f7c3333c5092054e42ac317e947c5ac506ff5b5db0537b05",
+      "approx_input_tokens": 888,
+      "retained_history_events": 20
+    },
+    {
+      "user_id": 413,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "7e6e9978542df25f906f9a072775263f21468a97b7f656c8afb7b0c8d20fe1f3",
+      "approx_input_tokens": 2128,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 413,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "453c03885236aea195ba4ccc1c9f7e6f612dee19ed9b14f47ccc88bd92b45e5b",
+      "approx_input_tokens": 2237,
+      "retained_history_events": 9
+    },
+    {
+      "user_id": 413,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "763dfe8925886c308f37a0f6c742bf8a0ba4867b4ddaa2a6cd0dd6f33a60bbb9",
+      "approx_input_tokens": 2449,
+      "retained_history_events": 17
+    },
+    {
+      "user_id": 413,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "9e6f64449b2984129d6de57c76b1c48fcddc56fdc748257e069072d1cba36ce6",
+      "approx_input_tokens": 3255,
+      "retained_history_events": 46
+    },
+    {
+      "user_id": 413,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "54eafc6b227f9fed94f025463bed48f94b72fe4b82ed615a663e785cfa267104",
+      "approx_input_tokens": 724,
+      "retained_history_events": 17
+    },
+    {
+      "user_id": 418,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "e2dab7a28c4cddd425d53db157a8335781b568f5d075e7327d2f499cbfab1c24",
+      "approx_input_tokens": 2166,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 418,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "1c720da9fc56a60507b8b314ee37ceb19870dd4d123c2990ca8b57be3a02b3a9",
+      "approx_input_tokens": 2303,
+      "retained_history_events": 9
+    },
+    {
+      "user_id": 418,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "55abc3aac3a8c182e29e404d5a6ea9270bbbf750899f78582bb8151bff61a1a6",
+      "approx_input_tokens": 2521,
+      "retained_history_events": 16
+    },
+    {
+      "user_id": 418,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "ae9d6e68b6b0aa3c7856ea012e0d653248dc270ff04a0bd2dbfc2989220679fc",
+      "approx_input_tokens": 3293,
+      "retained_history_events": 42
+    },
+    {
+      "user_id": 418,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "cd123f764a120d8708eb945b4cf258dfb4a281bf40ef549934157294a6ac6ef4",
+      "approx_input_tokens": 745,
+      "retained_history_events": 16
+    },
+    {
+      "user_id": 443,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "35742d6faffd21e1d76d147519b393b9dfb6634a10f863b2d74fb4d2320bd569",
+      "approx_input_tokens": 2185,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 443,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "96920b72094616c0d0cd7b4d92ebb1f38c684d4cfb154e70c96f03572d97a752",
+      "approx_input_tokens": 2348,
+      "retained_history_events": 10
+    },
+    {
+      "user_id": 443,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "c49c5423f535a849bf2d35649f0554bdf129652093a147e09a2d15e4c3439112",
+      "approx_input_tokens": 2533,
+      "retained_history_events": 16
+    },
+    {
+      "user_id": 443,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "f0693252cd74767a2cb32601fe59b6b4e09ed0104ce9789820619fca8a761de6",
+      "approx_input_tokens": 2687,
+      "retained_history_events": 21
+    },
+    {
+      "user_id": 443,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "54ea42859d93a1b6c7b203ec27a6b72df08baaf8fd4a055a430a2a4a77a91b33",
+      "approx_input_tokens": 764,
+      "retained_history_events": 16
+    },
+    {
+      "user_id": 459,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "ba3aae64a0a5eaf0dc59e9f275780e87a51b95585c5c7a1cb38a68d8876502e1",
+      "approx_input_tokens": 2084,
+      "retained_history_events": 3
+    },
+    {
+      "user_id": 459,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "852be36168176374181b3e4287beff30e9cff114026a60811b92d231eab9d52b",
+      "approx_input_tokens": 2253,
+      "retained_history_events": 8
+    },
+    {
+      "user_id": 459,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "ec95307294ba759110f9271be4ed07bde56ca460c62ea68d75de53e71024f182",
+      "approx_input_tokens": 2523,
+      "retained_history_events": 17
+    },
+    {
+      "user_id": 459,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "d1184c2d06ec93e5062b3b82b1c4ec1b57f1e5b07732e71b836b82734b27d197",
+      "approx_input_tokens": 2562,
+      "retained_history_events": 18
+    },
+    {
+      "user_id": 459,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "cd0a275fab401cc0dbabdceb62e5d8e7cdebfad226f39cbcb36e95ef5280435e",
+      "approx_input_tokens": 785,
+      "retained_history_events": 17
+    },
+    {
+      "user_id": 461,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "fd6f824d7dcc2cfe37caa48b662e1574ba0e1c212c9e3bc32d1decaba3ac7428",
+      "approx_input_tokens": 2104,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 461,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "56c1b6dade5a7c9c90e86685e7afab39cb0bfebe6270a9c8c51dd4dc25e45700",
+      "approx_input_tokens": 2261,
+      "retained_history_events": 10
+    },
+    {
+      "user_id": 461,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "1fe5e36f133c4e260f03b8978217c2b528becab25337fde2198556ac60d88a23",
+      "approx_input_tokens": 2516,
+      "retained_history_events": 19
+    },
+    {
+      "user_id": 461,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "b4d6a3561383524de27338ae043f41468d2de54e50f814ee4314d6a9b88029d6",
+      "approx_input_tokens": 2603,
+      "retained_history_events": 22
+    },
+    {
+      "user_id": 461,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "e9da1f700b9c710d46a9c3fee21924437f1777f9690a7c29b49df0e74ed9acbd",
+      "approx_input_tokens": 812,
+      "retained_history_events": 19
+    },
+    {
+      "user_id": 471,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "f901da7f7802a004c5217ed29603157f50f3fe33cc5c08ce9b5304ed0af60ec2",
+      "approx_input_tokens": 2114,
+      "retained_history_events": 3
+    },
+    {
+      "user_id": 471,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "21ed0afcd3740b65afa669e14eac6c7b57a9d22d65cd404374e03a27c1b67fc4",
+      "approx_input_tokens": 2206,
+      "retained_history_events": 6
+    },
+    {
+      "user_id": 471,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "d388c2b8983c68db3eaec327252b481c7ed2619f898fbb774634868ad8cf391d",
+      "approx_input_tokens": 2447,
+      "retained_history_events": 13
+    },
+    {
+      "user_id": 471,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "230a67e6d51b3b82e20d81555176d685c0638adcf9af50a4d292705c9a18116b",
+      "approx_input_tokens": 2578,
+      "retained_history_events": 17
+    },
+    {
+      "user_id": 471,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "65c45846f388ed17ab7e2e8ebfe304855af371503369b237f0338427234f668e",
+      "approx_input_tokens": 695,
+      "retained_history_events": 13
+    },
+    {
+      "user_id": 475,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "7de284581eb57dd71d681b0fa68ef692e8646d8917e5f074db23ba5921e02792",
+      "approx_input_tokens": 2105,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 475,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "c23520c46567be51ca66fd6c4266618a84c77aea12f39b1c9aaef2b25ebdfb58",
+      "approx_input_tokens": 2263,
+      "retained_history_events": 10
+    },
+    {
+      "user_id": 475,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "00d5aca9f4dae0a97fe98ecc8a00760425460afd382445315e56855b9d1a1fbe",
+      "approx_input_tokens": 2573,
+      "retained_history_events": 20
+    },
+    {
+      "user_id": 475,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "8be625ecfea8cc0e54c9800b408b3c8b2ef126559e6c7cc7e90a061544c7d94d",
+      "approx_input_tokens": 3483,
+      "retained_history_events": 49
+    },
+    {
+      "user_id": 475,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "6f352c09a35d1b13ecf57ae84d646bd21800a6abd0b598b0d264a04f6628a5a3",
+      "approx_input_tokens": 888,
+      "retained_history_events": 20
+    },
+    {
+      "user_id": 517,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "b2ec9549f7f609f999ba21aa3322e35a00ad0d057de02fc4008490d5fe1ed647",
+      "approx_input_tokens": 2094,
+      "retained_history_events": 4
+    },
+    {
+      "user_id": 517,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "b24dde5528a453b020a9e959465754a282e58ea9c4f1beb9d21a8d6677316372",
+      "approx_input_tokens": 2128,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 517,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "55923a96f1df3246cc266d6b2e7bf13734b7b8cb05e38aaf81087b510114e9cf",
+      "approx_input_tokens": 2374,
+      "retained_history_events": 13
+    },
+    {
+      "user_id": 517,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "b5de2aa904021996001ae26c8ab4b0d2ad06a04059fd6583af4bcf4c4b6857db",
+      "approx_input_tokens": 3103,
+      "retained_history_events": 37
+    },
+    {
+      "user_id": 517,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "e0b0588c247a97e875e3b24e8d2a319d5dfbd0a373f03f93abf71e6708141b95",
+      "approx_input_tokens": 655,
+      "retained_history_events": 13
+    },
+    {
+      "user_id": 523,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "1fadd6c8e94ff3babe79fcff50efc094a99fed0658ee5bd70d77f2f7aa9c439d",
+      "approx_input_tokens": 2128,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 523,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "d960411c68a0ea39246aa68d76130b52009c0dea5f34f8c4c84e9f5a6207f788",
+      "approx_input_tokens": 2270,
+      "retained_history_events": 10
+    },
+    {
+      "user_id": 523,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "20cdb50915edebee25a526284b980c2bfd45115f99a7fbbc5fc524cfe142f5d4",
+      "approx_input_tokens": 2573,
+      "retained_history_events": 20
+    },
+    {
+      "user_id": 523,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "bab7831ff596b03a5eef8c91e4bbbd0387189f7dd9a13b0eb0608914ad83be5b",
+      "approx_input_tokens": 3378,
+      "retained_history_events": 44
+    },
+    {
+      "user_id": 523,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "c6245034bbf33f8eecf3691bbb19bcf806f365adcd164fdf27ef75b4b0524114",
+      "approx_input_tokens": 858,
+      "retained_history_events": 20
+    },
+    {
+      "user_id": 551,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "ba3fc5303dc3cd1331ef1b12555cdec942144d2d837b82357b7e14706d9c0784",
+      "approx_input_tokens": 2116,
+      "retained_history_events": 4
+    },
+    {
+      "user_id": 551,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "c6885ba8d361db1a799447f299f375ca70c610afe3719f56b2d87f8be92a2922",
+      "approx_input_tokens": 2199,
+      "retained_history_events": 6
+    },
+    {
+      "user_id": 551,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "ee361e8f5d40dc6ddd1da785acdb16122e81a1a6f4ebcd5e11f648a3cd3f451c",
+      "approx_input_tokens": 2437,
+      "retained_history_events": 14
+    },
+    {
+      "user_id": 551,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "9ad84438e51ee2ce7d6a9e02450fcff0326b1268eb6dac845ca68d75a974f140",
+      "approx_input_tokens": 3124,
+      "retained_history_events": 37
+    },
+    {
+      "user_id": 551,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "16027576956209994ef23dbaffafc60e96c3d04bb6205dd3537903d136619a72",
+      "approx_input_tokens": 709,
+      "retained_history_events": 14
+    },
+    {
+      "user_id": 567,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "d2169a25e0d7d5f0ea7a79476827bd56fb4a40181da0ca03879c687e891d9c1e",
+      "approx_input_tokens": 2115,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 567,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "140af0d31ae7c5a15373c0a85b92e13eccb7872734f2e494cdd7f56cd8fb3ca8",
+      "approx_input_tokens": 2270,
+      "retained_history_events": 10
+    },
+    {
+      "user_id": 567,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "19089b4844f523b765542317941154b18fbb4f7482a1a088e04dabfc9c22a49a",
+      "approx_input_tokens": 2615,
+      "retained_history_events": 20
+    },
+    {
+      "user_id": 567,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "7542ff96d43efa7238bb3f5a167bcc548297456c6507207d8b532ebc60934cf5",
+      "approx_input_tokens": 3010,
+      "retained_history_events": 32
+    },
+    {
+      "user_id": 567,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "25136ec245ec64c31faf3128e2532b13e5f6d9302c53132c3680a23e5b5c7531",
+      "approx_input_tokens": 917,
+      "retained_history_events": 20
+    },
+    {
+      "user_id": 582,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "96bcb98e6b1813597c953f00050835c626354f827a1b4cf86efcff35b8b9068b",
+      "approx_input_tokens": 2156,
+      "retained_history_events": 5
+    },
+    {
+      "user_id": 582,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "c5a3f2e02b72d199642d1734381f1eb0e12d52378fe5850f7a07fcce29ef4a2c",
+      "approx_input_tokens": 2281,
+      "retained_history_events": 9
+    },
+    {
+      "user_id": 582,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "3e12bbe85e4c60e3ea69fea25d292d5e1ed00b6e55134cdf4b44ae70ef81b839",
+      "approx_input_tokens": 2468,
+      "retained_history_events": 15
+    },
+    {
+      "user_id": 582,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "73127beb309b4a513585a7b88993fafa1de389b1187fba8b270943d69f574d2d",
+      "approx_input_tokens": 2884,
+      "retained_history_events": 28
+    },
+    {
+      "user_id": 582,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "36bb4ba109c5ab0a3f19124f7d36f626e8829fbc315e377a04420520b9b10616",
+      "approx_input_tokens": 729,
+      "retained_history_events": 15
+    },
+    {
+      "user_id": 596,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "31221a6d220139cfabd42e362d8a24732257a38e8044e092e09cfb0e41d2c62c",
+      "approx_input_tokens": 2060,
+      "retained_history_events": 3
+    },
+    {
+      "user_id": 596,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "fc0baacc65f5c106bdb161497ddc38aaa1308891fd60dbaf6b50631fc806e3fe",
+      "approx_input_tokens": 2085,
+      "retained_history_events": 4
+    },
+    {
+      "user_id": 596,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "63b78ca7effc07ff4830dfb14cc7e6aff006c5be93d54a08bd1d155f5e358b74",
+      "approx_input_tokens": 2166,
+      "retained_history_events": 7
+    },
+    {
+      "user_id": 596,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "d5bdb52aae1a76ae41e9ed767167a2ef623a14c3131642fa2c6bd39db2bd4704",
+      "approx_input_tokens": 2490,
+      "retained_history_events": 18
+    },
+    {
+      "user_id": 596,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "54e9ddfe194f45e8282c969256a5f8cd3ebe64de2ac98c13326099d3d98d3301",
+      "approx_input_tokens": 444,
+      "retained_history_events": 7
+    },
+    {
+      "user_id": 601,
+      "variant": "constrained",
+      "history_length": 5,
+      "messages_sha256": "1d6a8fa2dc408550e3764ba2b35af9c863329e12cf8272d56d3a17ebd7bca6d6",
+      "approx_input_tokens": 2093,
+      "retained_history_events": 4
+    },
+    {
+      "user_id": 601,
+      "variant": "constrained",
+      "history_length": 10,
+      "messages_sha256": "2809dcb1fef36e8abd714b9ec4b606a9abe8db4eae92b772c54921b03245b670",
+      "approx_input_tokens": 2268,
+      "retained_history_events": 9
+    },
+    {
+      "user_id": 601,
+      "variant": "constrained",
+      "history_length": 20,
+      "messages_sha256": "709358fec950f00c7838d20de33738614852da2693586bc3036016b7edd73c4d",
+      "approx_input_tokens": 2557,
+      "retained_history_events": 18
+    },
+    {
+      "user_id": 601,
+      "variant": "constrained",
+      "history_length": 50,
+      "messages_sha256": "3da56c6f5b178e8b75d48c859b778ea03f48da7148e1db443d5c31d7804329e7",
+      "approx_input_tokens": 3445,
+      "retained_history_events": 47
+    },
+    {
+      "user_id": 601,
+      "variant": "unconstrained",
+      "history_length": 20,
+      "messages_sha256": "9252f08209227754fbc28b1e577475a13805492d6e2e9b63a180428b38330c7e",
+      "approx_input_tokens": 847,
+      "retained_history_events": 18
+    }
+  ]
+}

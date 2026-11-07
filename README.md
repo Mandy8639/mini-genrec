@@ -4,6 +4,10 @@ A weekend-sized, **unfine-tuned** experiment inspired by [GenRec: Towards LLM-Na
 
 Netflix trains a foundation model and a catalog scoring head together, then scores without decoding recommendations. This repo uses an off-the-shelf OpenAI model to **generate a candidate ranking**, with a code-enforced catalog gate. It reproduces the context and measurement ideas, not Netflix's architecture, training, serving costs, or claimed performance.
 
+## Frozen experiment inputs
+
+The [mini-genrec-v1 snapshot](experiments/mini-genrec-v1/README.md) preserves the planned configuration and fixed cohorts: 3 development users, 34 evaluation users and a 21-user long-history subset. It includes targets, ordered candidate sets, complete eligible rating histories, the catalog, dataset hashes and prompt fingerprints. This freeze made no model calls and changed no ranking methods. The legacy evaluation CLI does not yet consume these manifests; runner integration and the missing controls are the next phase.
+
 ## Method in ten lines
 
 1. Download the public [MovieLens ml-latest-small](https://grouplens.org/datasets/movielens/latest/) archive; retain its upstream README/license locally.
