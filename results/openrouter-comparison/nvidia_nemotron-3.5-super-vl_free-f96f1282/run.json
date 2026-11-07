@@ -1,0 +1,52 @@
+{
+  "source": "https://files.grouplens.org/datasets/movielens/ml-latest-small.zip",
+  "ratings_sha256": "aa289ca83157595d0df6aea1be6a4ded676ddc4385472e8313a8ed9805352646",
+  "movies_sha256": "5a5f32dd9bb3797b8e728a1b98958789d2b13f294a69fdfbc5727f8a9611aa07",
+  "raw_ratings": 100836,
+  "raw_users": 610,
+  "cutoff_timestamp": 1458635171,
+  "catalog_size": 1000,
+  "train_ratings": 50241,
+  "train_users": 463,
+  "eligible_users": 37,
+  "evaluated_users": 3,
+  "candidates": 50,
+  "seed": 42,
+  "popular_catalog_items": 100,
+  "test_targets_below_4_stars": 1,
+  "model": "nvidia/nemotron-3.5-super-vl:free",
+  "backend": "openrouter",
+  "token_budget": 4096,
+  "mode": "api",
+  "llm_skip_reason": null,
+  "run_at": "2026-11-07T00:46:37.224609+00:00",
+  "planned_llm_requests": 15,
+  "config": {
+    "users": 3,
+    "candidates": 50,
+    "catalog_size": 1000,
+    "seed": 42,
+    "backend": "openrouter",
+    "model": "nvidia/nemotron-3.5-super-vl:free",
+    "models": [
+      "nvidia/nemotron-3.5-super-vl:free",
+      "dots-studio/dots-3-note-preview:free"
+    ],
+    "request_budget": 40,
+    "reasoning": "off",
+    "max_output_tokens": 2400,
+    "token_budget": 4096,
+    "data_dir": "data",
+    "cache_dir": "cache",
+    "output": "results/openrouter-comparison/nvidia_nemotron-3.5-super-vl_free-f96f1282",
+    "baseline_only": false,
+    "update_readme": false
+  },
+  "elbow": {
+    "history_length": 50,
+    "mrr": 0.358974358974359,
+    "best_mrr": 0.358974358974359,
+    "tolerance": 0.01,
+    "reason": "Smallest history within 0.01 absolute MRR of the best observed point; exploratory."
+  }
+}

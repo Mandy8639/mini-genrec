@@ -1,0 +1,10 @@
+ranker,history_length,users,successful_evaluations,mrr,hit10,popular_top10_fraction,top10_slot_coverage,suggestions,outside_catalog_rate,outside_candidates_rate,duplicate_suggestions,mean_approx_input_tokens,mean_api_input_tokens,mean_latency_seconds,mean_retained_history_events,low_signal_events_dropped,budget_events_dropped,repeat_events_compressed,errors
+baseline,5,1,1,0.1,1.0,0.1,1.0,0,,,0,,,,5.0,0,0,0,0
+mini-genrec,5,1,1,0.3333333333333333,1.0,0.0,1.0,55,0.0,0.09090909090909091,0,2150.0,2179.0,4.301945958053693,5.0,0,0,0,0
+baseline,10,1,1,0.09090909090909091,0.0,0.1,1.0,0,,,0,,,,10.0,0,0,0,0
+mini-genrec,10,1,1,0.3333333333333333,1.0,0.0,1.0,56,0.0,0.10714285714285714,0,2177.0,2209.0,3.5392969170352444,6.0,4,0,0,0
+baseline,20,1,1,0.08333333333333333,0.0,0.1,1.0,0,,,0,,,,20.0,0,0,0,0
+mini-genrec,20,1,1,0.25,1.0,0.0,1.0,59,0.0,0.15254237288135594,0,2272.0,2316.0,5.963720083003864,9.0,11,0,0,0
+baseline,50,1,1,0.125,1.0,0.1,1.0,0,,,0,,,,50.0,0,0,0,0
+mini-genrec,50,1,1,1.0,1.0,0.0,1.0,50,0.0,0.0,0,2833.0,2954.0,6.560070915962569,28.0,22,0,0,0
+unconstrained,20,1,1,,,0.25,0.8,10,0.2,,0,538.0,437.0,1.5903583749895915,9.0,11,0,0,0
