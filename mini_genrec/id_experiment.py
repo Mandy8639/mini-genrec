@@ -89,7 +89,7 @@ def preflight(models, pending):
         quota = response.json()["data"].get("free_model_daily_requests") or {}
         if quota.get("remaining", 0) < pending:
             raise ValueError("Not enough remaining free requests for the next batch.")
-        print(f"Both frozen models confirmed free; {quota['remaining']} free requests remaining.", flush=True)
+        print(f"{len(models)} frozen model(s) confirmed free; {quota['remaining']} free requests remaining.", flush=True)
 
 
 def report(output, records, title_rows, models):

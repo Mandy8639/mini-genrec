@@ -16,6 +16,8 @@ The separate [movie-ID comparison](results/id-comparison/report.md) reuses the s
 
 Use `python -m mini_genrec.id_experiment` for a dry run, or add `--execute` to make free OpenRouter requests. Run the same command again to resume a paused batch. The runner checks live free-model availability and quota before each batch and writes separately from the title experiment.
 
+The [interleaved Dots comparison](results/paired-format/report.md) checks the format effect with two fresh arms. It alternates which format goes first within each pair and measures coverage, MRR, Hit@10, and output tokens. The predeclared rule and order are in [protocol.json](results/paired-format/protocol.json). Use `python -m mini_genrec.paired_format` for a dry run; add `--execute` only to start or resume free model requests. This runner uses its own cache namespace, and the prior runs remain unchanged.
+
 After installing dependencies and downloading MovieLens as described below, validate the entire plan locally:
 
 ```bash

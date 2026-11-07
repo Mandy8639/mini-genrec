@@ -1,0 +1,340 @@
+{
+  "model": "dots-studio/dots-3-note-preview:free",
+  "snapshot": "36268bfe3ba00c493ca990a1bd034a5704b554a2065dc7af2919eaf8081c9978",
+  "order": [
+    [
+      41,
+      "title"
+    ],
+    [
+      41,
+      "id"
+    ],
+    [
+      47,
+      "id"
+    ],
+    [
+      47,
+      "title"
+    ],
+    [
+      50,
+      "title"
+    ],
+    [
+      50,
+      "id"
+    ],
+    [
+      65,
+      "id"
+    ],
+    [
+      65,
+      "title"
+    ],
+    [
+      67,
+      "title"
+    ],
+    [
+      67,
+      "id"
+    ],
+    [
+      77,
+      "id"
+    ],
+    [
+      77,
+      "title"
+    ],
+    [
+      103,
+      "title"
+    ],
+    [
+      103,
+      "id"
+    ],
+    [
+      106,
+      "id"
+    ],
+    [
+      106,
+      "title"
+    ],
+    [
+      111,
+      "title"
+    ],
+    [
+      111,
+      "id"
+    ],
+    [
+      112,
+      "id"
+    ],
+    [
+      112,
+      "title"
+    ],
+    [
+      119,
+      "title"
+    ],
+    [
+      119,
+      "id"
+    ],
+    [
+      122,
+      "id"
+    ],
+    [
+      122,
+      "title"
+    ],
+    [
+      148,
+      "title"
+    ],
+    [
+      148,
+      "id"
+    ],
+    [
+      159,
+      "id"
+    ],
+    [
+      159,
+      "title"
+    ],
+    [
+      247,
+      "title"
+    ],
+    [
+      247,
+      "id"
+    ],
+    [
+      282,
+      "id"
+    ],
+    [
+      282,
+      "title"
+    ],
+    [
+      285,
+      "title"
+    ],
+    [
+      285,
+      "id"
+    ],
+    [
+      326,
+      "id"
+    ],
+    [
+      326,
+      "title"
+    ],
+    [
+      328,
+      "title"
+    ],
+    [
+      328,
+      "id"
+    ],
+    [
+      352,
+      "id"
+    ],
+    [
+      352,
+      "title"
+    ],
+    [
+      382,
+      "title"
+    ],
+    [
+      382,
+      "id"
+    ],
+    [
+      400,
+      "id"
+    ],
+    [
+      400,
+      "title"
+    ],
+    [
+      413,
+      "title"
+    ],
+    [
+      413,
+      "id"
+    ],
+    [
+      443,
+      "id"
+    ],
+    [
+      443,
+      "title"
+    ],
+    [
+      459,
+      "title"
+    ],
+    [
+      459,
+      "id"
+    ],
+    [
+      471,
+      "id"
+    ],
+    [
+      471,
+      "title"
+    ],
+    [
+      475,
+      "title"
+    ],
+    [
+      475,
+      "id"
+    ],
+    [
+      517,
+      "id"
+    ],
+    [
+      517,
+      "title"
+    ],
+    [
+      523,
+      "title"
+    ],
+    [
+      523,
+      "id"
+    ],
+    [
+      551,
+      "id"
+    ],
+    [
+      551,
+      "title"
+    ],
+    [
+      567,
+      "title"
+    ],
+    [
+      567,
+      "id"
+    ],
+    [
+      582,
+      "id"
+    ],
+    [
+      582,
+      "title"
+    ],
+    [
+      596,
+      "title"
+    ],
+    [
+      596,
+      "id"
+    ],
+    [
+      601,
+      "id"
+    ],
+    [
+      601,
+      "title"
+    ]
+  ],
+  "prompt_sha256": "19771712d052806a8f704753ae83886c23f4530da3699767d1edea8cf9c875f9",
+  "schemas": {
+    "title": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "movie_ranking",
+        "strict": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "ranking": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "ranking"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "id": {
+      "type": "json_schema",
+      "json_schema": {
+        "name": "movie_ranking",
+        "strict": true,
+        "schema": {
+          "type": "object",
+          "properties": {
+            "ranking": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          },
+          "required": [
+            "ranking"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  },
+  "primary": "candidate_coverage",
+  "secondary": [
+    "api_output_tokens",
+    "rr",
+    "hit10"
+  ],
+  "bootstrap_samples": 10000,
+  "bootstrap_seed": 42,
+  "decision_rule": "Prefer IDs for Dots efficiency if the 95% paired coverage interval is entirely above zero, mean reported output tokens decrease on matched pairs, and neither ranking interval is entirely below zero. Otherwise keep titles. This is not a test of ranking noninferiority.",
+  "source_sha256": {
+    "paired_format.py": "db9bc4c657c15e1d04f9f9752546f4edf341d6cd39ff419a58b5a8d8c34b2863",
+    "id_experiment.py": "415a241e23dcff10d8b9839bc6584039a09e814aeab0334c1133019046c59f41",
+    "llm.py": "d89ca4321f742b15ab63f3c1aaee105dc04eeeb16d55e74cf85270c4a57aa090",
+    "evaluate.py": "11c9b40192fff0d7866c24f08c6884e0d0f785fed4caa707964e477717edf55a"
+  }
+}
