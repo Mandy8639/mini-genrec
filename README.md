@@ -12,6 +12,8 @@ The [mini-genrec-v1 snapshot](experiments/mini-genrec-v1/README.md) preserves th
 
 ## Run the frozen experiment
 
+The [shortlist reranking experiment](results/shortlist/report.md) tests whether Dots can improve the hybrid baseline’s Hit@10. It sends the baseline’s top 20 in their original order, without inserting the held-out target. Valid returned IDs come first, omitted shortlist IDs follow in baseline order, and positions 21–50 stay fixed. A failed or empty response leaves the baseline unchanged. The primary decision rule and exact shortlists are saved in [the protocol](results/shortlist/protocol.json). Use `python -m mini_genrec.shortlist` for a dry run and add `--execute` to start or resume free inference.
+
 The separate [movie-ID comparison](results/id-comparison/report.md) reuses the saved 20-event engineered title arm. It keeps the frozen histories, candidate order and metadata, and request settings; only the output instruction and schema item type change. The schema accepts integers without a candidate enum, and the validator drops non-candidate IDs and duplicates. Because the title arm was collected earlier, this is a paired historical comparison rather than a randomized test of output format.
 
 Use `python -m mini_genrec.id_experiment` for a dry run, or add `--execute` to make free OpenRouter requests. Run the same command again to resume a paused batch. The runner checks live free-model availability and quota before each batch and writes separately from the title experiment.

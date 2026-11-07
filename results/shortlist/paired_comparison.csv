@@ -1,0 +1,2 @@
+comparison,users,bootstrap_samples,seed,rr_difference,rr_ci_low,rr_ci_high,hit10_difference,hit10_ci_low,hit10_ci_high,users_better_rr,users_tied_rr,users_worse_rr,recommendation,shortlist_targets,hit10_helped,hit10_hurt,full_fallbacks,partial_rankings
+Dots rerank minus hybrid baseline,34,10000,42,0.02664864628077157,-0.08396477723621004,0.139917497919228,-0.058823529411764705,-0.20588235294117646,0.11764705882352941,12,13,9,Keep the hybrid baseline,24,3,5,0,0
