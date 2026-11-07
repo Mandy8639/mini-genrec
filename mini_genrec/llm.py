@@ -102,9 +102,9 @@ class LLM:
         self.model, self.cache = model, cache
         self.cache.mkdir(parents=True, exist_ok=True)
 
-    def call(self, prompt: Prompt) -> dict:
+    def call(self, prompt: Prompt, schema=None) -> dict:
         request = dict(model=self.model, messages=prompt.messages,
-                       response_format=response_format(), temperature=0,
+                       response_format=response_format() if schema is None else schema, temperature=0,
                        max_completion_tokens=self.max_output_tokens)
         if self.backend == "openrouter":
             request.pop("max_completion_tokens")
@@ -146,13 +146,13 @@ class LLM:
         return result
 
 
-def parse_response(response: dict) -> list[str]:
+def parse_response(response: dict, item_type=str) -> list:
     if response["refusal"] or response["finish_reason"] != "stop":
         raise ValueError("refused or truncated response")
     parsed = json.loads(response["content"])
     if not isinstance(parsed, dict) or set(parsed) != {"ranking"}:
         raise ValueError("unexpected response structure")
-    titles = parsed["ranking"]
-    if not isinstance(titles, list) or any(not isinstance(t, str) for t in titles):
-        raise ValueError("invalid title list")
-    return titles
+    ranking = parsed["ranking"]
+    if not isinstance(ranking, list) or any(type(item) is not item_type for item in ranking):
+        raise ValueError("Invalid ranking item type.")
+    return ranking

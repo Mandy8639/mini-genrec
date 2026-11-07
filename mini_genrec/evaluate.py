@@ -186,7 +186,7 @@ def run(args, request_budget=None) -> pd.DataFrame:
     return summary
 
 
-def evaluate_llm(llm, prompt, common, dataset, case, ranker) -> dict:
+def evaluate_llm(llm, prompt, common, dataset, case, ranker, decode=None) -> dict:
     row = dict(common, ranker=ranker, ranking=[], error_category="", http_status=None,
                candidate_count=len(case.candidates), candidate_coverage=None)
     try:
@@ -204,8 +204,9 @@ def evaluate_llm(llm, prompt, common, dataset, case, ranker) -> dict:
                    response_provider=response.get("provider"), response_backend=response.get("backend"),
                    api_reasoning_tokens=response.get("reasoning_tokens"),
                    api_cost_usd=response.get("cost_usd"), response_id=response.get("response_id"))
-        validated = validate(parse_response(response), dataset.movies, case.candidates,
-                             unconstrained=ranker == "unconstrained")
+        validated = (decode(response, dataset, case) if decode else
+                     validate(parse_response(response), dataset.movies, case.candidates,
+                              unconstrained=ranker == "unconstrained"))
         row.update(asdict(validated))
         if ranker != "unconstrained":
             row["candidate_coverage"] = len(validated.ranking) / len(case.candidates)

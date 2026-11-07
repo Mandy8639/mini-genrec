@@ -12,6 +12,10 @@ The [mini-genrec-v1 snapshot](experiments/mini-genrec-v1/README.md) preserves th
 
 ## Run the frozen experiment
 
+The separate [movie-ID comparison](results/id-comparison/report.md) reuses the saved 20-event engineered title arm. It keeps the frozen histories, candidate order and metadata, and request settings; only the output instruction and schema item type change. The schema accepts integers without a candidate enum, and the validator drops non-candidate IDs and duplicates. Because the title arm was collected earlier, this is a paired historical comparison rather than a randomized test of output format.
+
+Use `python -m mini_genrec.id_experiment` for a dry run, or add `--execute` to make free OpenRouter requests. Run the same command again to resume a paused batch. The runner checks live free-model availability and quota before each batch and writes separately from the title experiment.
+
 After installing dependencies and downloading MovieLens as described below, validate the entire plan locally:
 
 ```bash
