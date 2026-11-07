@@ -1,5 +1,7 @@
 # mini-GenRec
 
+**[Live demo](https://mandy8639.github.io/mini-genrec/results/frozen-evaluation/viewer.html)** · Explore the saved rankings in your browser.
+
 A weekend-sized, **unfine-tuned** experiment inspired by [GenRec: Towards LLM-Native Recommendation at Netflix](https://netflixtechblog.com/genrec-towards-llm-native-recommendation-at-netflix-f20be6f643e3), Ying Li, Arjun Rao and Shradha Sehgal, Netflix Tech Blog, July 30, 2026. The source post was fetched and read for this implementation.
 
 Netflix trains a foundation model and a catalog scoring head together, then scores without decoding recommendations. This repo uses off-the-shelf models through OpenAI or OpenRouter to **generate a candidate ranking**, with a code-enforced catalog gate. It reproduces the context and measurement ideas, not Netflix's architecture, training, serving costs, or claimed performance.
