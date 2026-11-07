@@ -6,6 +6,8 @@ Netflix trains a foundation model and a catalog scoring head together, then scor
 
 ## Frozen experiment inputs
 
+Open the [offline results viewer](results/frozen-evaluation/viewer.html) in a browser. On GitHub, download the HTML file first. It needs no server, API key, or network access. Select a user, switch history conditions, and reveal the held-out movie; the example buttons highlight disagreements between the rankers. Rebuild the single-file viewer from the saved artifacts with `python -m mini_genrec.viewer` in the project environment.
+
 The [mini-genrec-v1 snapshot](experiments/mini-genrec-v1/README.md) preserves the planned configuration and fixed cohorts: 3 development users, 34 evaluation users and a 21-user long-history subset. It includes targets, ordered candidate sets, complete eligible rating histories, the catalog, dataset hashes and prompt fingerprints. The snapshot's files and historical status are unchanged. **`mini_genrec.experiment` now consumes this manifest**, with plain-history prompts, popularity-only and seeded-random controls. The legacy `mini_genrec.evaluate` CLI still uses its original sample-selection behavior.
 
 ## Run the frozen experiment
