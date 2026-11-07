@@ -2,11 +2,56 @@
 
 A weekend-sized, **unfine-tuned** experiment inspired by [GenRec: Towards LLM-Native Recommendation at Netflix](https://netflixtechblog.com/genrec-towards-llm-native-recommendation-at-netflix-f20be6f643e3), Ying Li, Arjun Rao and Shradha Sehgal, Netflix Tech Blog, July 30, 2026. The source post was fetched and read for this implementation.
 
-Netflix trains a foundation model and a catalog scoring head together, then scores without decoding recommendations. This repo uses an off-the-shelf OpenAI model to **generate a candidate ranking**, with a code-enforced catalog gate. It reproduces the context and measurement ideas, not Netflix's architecture, training, serving costs, or claimed performance.
+Netflix trains a foundation model and a catalog scoring head together, then scores without decoding recommendations. This repo uses off-the-shelf models through OpenAI or OpenRouter to **generate a candidate ranking**, with a code-enforced catalog gate. It reproduces the context and measurement ideas, not Netflix's architecture, training, serving costs, or claimed performance.
 
 ## Frozen experiment inputs
 
-The [mini-genrec-v1 snapshot](experiments/mini-genrec-v1/README.md) preserves the planned configuration and fixed cohorts: 3 development users, 34 evaluation users and a 21-user long-history subset. It includes targets, ordered candidate sets, complete eligible rating histories, the catalog, dataset hashes and prompt fingerprints. This freeze made no model calls and changed no ranking methods. The legacy evaluation CLI does not yet consume these manifests; runner integration and the missing controls are the next phase.
+The [mini-genrec-v1 snapshot](experiments/mini-genrec-v1/README.md) preserves the planned configuration and fixed cohorts: 3 development users, 34 evaluation users and a 21-user long-history subset. It includes targets, ordered candidate sets, complete eligible rating histories, the catalog, dataset hashes and prompt fingerprints. The snapshot's files and historical status are unchanged. **`mini_genrec.experiment` now consumes this manifest**, with plain-history prompts, popularity-only and seeded-random controls. The legacy `mini_genrec.evaluate` CLI still uses its original sample-selection behavior.
+
+## Run the frozen experiment
+
+After installing dependencies and downloading MovieLens as described below, validate the entire plan locally:
+
+```bash
+python -m mini_genrec.experiment --dry-run
+```
+
+Dry run is the default: it checks snapshot/dataset fingerprints, restores the exact frozen cases, reproduces the engineered prompt fingerprints, builds the plain-history conditions and prints the 330-condition plan. It makes no model calls, needs no API key, and writes no results.
+
+Measure the three classic rankers without any model calls:
+
+```bash
+python -m mini_genrec.experiment --baseline-only --output results/frozen-baselines
+```
+
+The local controls use the frozen hybrid parameters, training-count popularity with movie-ID tie-breaking, and a per-user seeded shuffle. The random control hashes a versioned seed domain separately from candidate sampling, and is invariant to candidate input order. Plain history retains neutral ratings and repeats, packs the newest complete events under pressure, then serializes retained events chronologically. The engineered condition preserves every historical prompt fingerprint.
+
+To later start the free-model experiment, inference must be explicitly enabled:
+
+```bash
+# Requires OPENROUTER_API_KEY in .env. This command makes API requests.
+python -m mini_genrec.experiment --execute
+```
+
+The freeze file's `inference_enabled=false` records the historical planning boundary; it is not silently edited or treated as authorization. The new runner requires the explicit `--execute` flag. It permits only models from the frozen named `:free` list, shares the 40-attempt budget, and pauses on quota/budget exhaustion. Repeat the identical command to resume; completed condition records are not requested again. Cached responses remain reusable if a process stopped after an API response but before its checkpoint was written.
+
+The main and plain-history comparisons each use 34 users. The elbow uses only the fixed 21 users with 50+ past catalog ratings, reusing their 20-event engineered predictions from the main comparison. Total: **68 main + 68 plain + 68 unconstrained + 126 additional elbow = 330 logical conditions**. Smaller runs use `--limit-users N`, taking prefixes of the saved cohort order; `--cohort development` explicitly selects the three pilot users. `--models MODEL_ID` can select a subset of the frozen model list. Changing the selected cohort/models or ranking code requires a new output directory; resuming with a different request budget is allowed.
+
+Outputs default to `results/frozen/mini-genrec-v1/RUN_ID/`; a custom `--output` directory must be new or have a matching checkpoint. `run.json` records the frozen configuration, selection, code fingerprints and run identity. `state.json` checkpoints each LLM condition and invocation's uncached attempts. Final `per_user.json`, `metrics.csv`, `report.md`, `elbow.csv`, `elbow.json` and `elbow.png` keep main/context/unconstrained/elbow views separate. Baseline-only reports explicitly leave LLM scores unmeasured. Partial runs publish status/checkpoints, not aggregate tables.
+
+Candidate coverage is unique valid ranked candidates / 50. A short or empty valid JSON ranking is a completeness failure, not a parse error; absent targets still score zero. Reports distinguish incompleteness from refusals, truncations, malformed JSON/schema, connection/timeouts, HTTP errors, configuration/authentication failures and budget/quota pauses. Fatal configuration failures stop the run. Unknown cost metadata stays unknown. Native provider tokens and original request latency are separate from estimated prompt size; checkpoint/cache reuse is recorded without treating it as fresh inference.
+
+All verification of this runner used local controls or mocked HTTP transport. The larger frozen-cohort LLM experiment has not yet been run. The earlier three-user live pilot below remains separate.
+
+Measured local controls on the **34 frozen evaluation users**, with the prespecified 20-event window:
+
+| Ranker | MRR | Hit@10 | Candidate coverage |
+|---|---:|---:|---:|
+| Popularity + CF | 0.2220 | 50.0% | 100% |
+| Popularity only | 0.1466 | 38.2% | 100% |
+| Seeded random | 0.0539 | 5.9% | 100% |
+
+These are measured finite-sample results, including the single prespecified random seed. They are not directly comparable to the three-user pilot. The saved [local report](results/frozen-baselines/report.md), [metrics](results/frozen-baselines/metrics.csv) and [matched-cohort history sweep](results/frozen-baselines/elbow.png) contain 291 control predictions, zero completed LLM conditions and zero API attempts.
 
 ## Method in ten lines
 

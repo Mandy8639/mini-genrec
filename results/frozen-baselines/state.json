@@ -1,0 +1,86 @@
+{
+  "identity": {
+    "manifest_sha256": "36268bfe3ba00c493ca990a1bd034a5704b554a2065dc7af2919eaf8081c9978",
+    "cohort": "evaluation",
+    "selected_users": [
+      41,
+      47,
+      50,
+      65,
+      67,
+      77,
+      103,
+      106,
+      111,
+      112,
+      119,
+      122,
+      148,
+      159,
+      247,
+      282,
+      285,
+      326,
+      328,
+      352,
+      382,
+      400,
+      413,
+      443,
+      459,
+      471,
+      475,
+      517,
+      523,
+      551,
+      567,
+      582,
+      596,
+      601
+    ],
+    "elbow_users": [
+      41,
+      47,
+      50,
+      103,
+      111,
+      112,
+      119,
+      122,
+      159,
+      247,
+      282,
+      326,
+      328,
+      352,
+      382,
+      475,
+      517,
+      551,
+      567,
+      596,
+      601
+    ],
+    "models": [
+      "nvidia/nemotron-3.5-super-vl:free",
+      "dots-studio/dots-3-note-preview:free"
+    ],
+    "mode": "baseline-only",
+    "source_sha256": {
+      "experiment.py": "df90b83c7892102abeb46c47f74b15e1f5bcb0141074b472f0f791ec8d2c8cf6",
+      "context.py": "8550971cc31d49e4946be5c3b3aea75d00ecfb42ef89a7c2d3fd2bed353404dd",
+      "baseline.py": "f5f097bb9195779bc27629148984416d20e69f57f7b6f32910103e1343c8acb8",
+      "evaluate.py": "8b95eaac2ca1e6bc21d00a92b01eded492fb3baf9b60ab7a487c2b70f4c4d8d4",
+      "llm.py": "77b46cf65340665ecaaeb819f4c42a97e03b378150f5c9674a640d646b5bd26a",
+      "data.py": "a2bdbae44e2e80436e2f0814e166b2ebde63bdfe7b2705b9202e9e79ebd9e2dd"
+    }
+  },
+  "rows": [],
+  "invocations": [
+    {
+      "started_at": "2026-11-07T04:57:56.960632+00:00",
+      "uncached_attempts": 0,
+      "status": "complete"
+    }
+  ]
+}

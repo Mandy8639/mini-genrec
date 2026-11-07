@@ -30,6 +30,11 @@ class Validated:
 class RunPaused(Exception):
     """A request budget or provider quota stopped work; cached calls can be resumed."""
 
+    def __init__(self, message, category="paused", http_status=None):
+        super().__init__(message)
+        self.category = category
+        self.http_status = http_status
+
 
 @dataclass
 class RequestBudget:
@@ -40,7 +45,7 @@ class RequestBudget:
 
     def acquire(self):
         if self.used >= self.limit:
-            raise RunPaused(f"Reached this invocation's {self.limit}-request budget.")
+            raise RunPaused(f"Reached this invocation's {self.limit}-request budget.", category="request_budget")
         delay = self.interval - (time.monotonic() - self.last_started)
         if self.used and delay > 0:
             time.sleep(delay)
@@ -119,7 +124,8 @@ class LLM:
             response = self.client.chat.completions.create(**request)
         except RateLimitError:
             if self.backend == "openrouter":
-                raise RunPaused("OpenRouter rate/quota limit reached; retry later with the same command.") from None
+                raise RunPaused("OpenRouter rate/quota limit reached; retry later with the same command.",
+                                category="rate_limit", http_status=429) from None
             raise
         choice = response.choices[0]
         result = dict(content=choice.message.content,

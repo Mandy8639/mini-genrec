@@ -4,6 +4,7 @@ from __future__ import annotations
 import os
 from pathlib import Path
 import tempfile
+import json
 
 # Keep matplotlib's writable cache within the system temporary directory.
 os.environ.setdefault("MPLCONFIGDIR", os.path.join(tempfile.gettempdir(), "mini-genrec-matplotlib"))
@@ -11,6 +12,52 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import pandas as pd
+
+
+def write_frozen_elbow(output, summary, tasks, prompts, elbow_users, models, mode):
+    """Matched 50+-history cohort; baseline-only mode never invents an LLM curve."""
+    from .evaluate import find_elbow
+    rows, elbows = [], {}
+    for model in models:
+        measured = summary[(summary.view == "elbow") & (summary.model == model)]
+        elbows[model] = find_elbow(measured)
+        for length in (5, 10, 20, 50):
+            planned = [prompts[t.key] for t in tasks if t.model == model and t.user_id in elbow_users
+                       and t.ranker == "mini-genrec" and t.strategy == "engineered_v1" and t.history_length == length]
+            if not planned:
+                continue
+            actual = measured[measured.history_length == length]
+            base = summary[(summary.view == "elbow") & (summary.model == "") & (summary.history_length == length)]
+            row = dict(model=model, history_length=length, users=len(elbow_users),
+                       approx_input_tokens=sum(p.input_tokens for p in planned)/len(planned),
+                       genrec_mrr=float(actual.iloc[0].mrr) if len(actual) else None,
+                       native_input_tokens=float(actual.iloc[0].mean_api_input_tokens) if len(actual) else None)
+            for ranker in ("baseline", "popularity", "random"):
+                row[ranker+"_mrr"] = float(base[base.ranker == ranker].iloc[0].mrr)
+            rows.append(row)
+    (output / "elbow.json").write_text(json.dumps(elbows, indent=2) + "\n")
+    frame = pd.DataFrame(rows)
+    frame.to_csv(output / "elbow.csv", index=False)
+    if frame.empty:
+        return
+    fig, ax = plt.subplots(figsize=(8, 4.8), layout="constrained")
+    first = frame[frame.model == models[0]].sort_values("history_length")
+    for ranker, label in [("baseline", "Popularity + CF"), ("popularity", "Popularity only"), ("random", "Seeded random")]:
+        ax.plot(first.approx_input_tokens, first[ranker+"_mrr"], "o--", label=label, alpha=.75)
+    for model, group in frame.groupby("model", sort=False):
+        if group.genrec_mrr.notna().any():
+            ax.plot(group.approx_input_tokens, group.genrec_mrr, "o-", label=model)
+    if mode == "baseline-only":
+        ax.text(.5, .94, "LLM not run; local controls only", transform=ax.transAxes, ha="center", color="#b20710")
+    for row in first.itertuples():
+        ax.annotate(f"{row.history_length} events", (row.approx_input_tokens, row.baseline_mrr),
+                    xytext=(-5, 9) if row.history_length == 50 else (5, 9), textcoords="offset points",
+                    ha="right" if row.history_length == 50 else "left", fontsize=8)
+    ax.set(xlabel="Mean estimated LLM input tokens (including candidates and schema)", ylabel="MRR",
+           title=f"Frozen history sweep · {len(elbow_users)} users with 50+ past ratings", ylim=(0, 1))
+    ax.legend(loc="upper right", fontsize=7)
+    fig.savefig(output / "elbow.png", dpi=160)
+    plt.close(fig)
 
 
 def number(value, percent=False):

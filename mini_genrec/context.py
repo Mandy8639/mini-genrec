@@ -50,14 +50,23 @@ class Verbalizer:
         return len(self.encoding.encode(text)) + 64
 
     def build(self, history: pd.DataFrame, candidates: list[int], as_of: int,
-              length: int, unconstrained: bool = False) -> Prompt:
+              length: int, unconstrained: bool = False,
+              strategy: str = "engineered_v1") -> Prompt:
         window = history.sort_values(["timestamp", "movieId"]).tail(length)
-        signal = window[(window.rating >= 4) | (window.rating <= 2)]
-        # Compress repeated movie ratings without claiming they represent repeat views.
-        repeats = Counter(map(int, signal.movieId))
-        unique = signal.drop_duplicates("movieId", keep="last").copy()
-        unique["priority"] = abs(unique.rating - 3)
-        unique = unique.sort_values(["priority", "timestamp", "movieId"], ascending=False)
+        if strategy == "engineered_v1":
+            signal = window[(window.rating >= 4) | (window.rating <= 2)]
+            # Compress repeated ratings, without claiming they represent repeat views.
+            repeats = Counter(map(int, signal.movieId))
+            unique = signal.drop_duplicates("movieId", keep="last").copy()
+            unique["priority"] = abs(unique.rating - 3)
+            unique = unique.sort_values(["priority", "timestamp", "movieId"], ascending=False)
+        elif strategy == "plain_recent":
+            signal = window
+            repeats = dict.fromkeys(map(int, window.movieId), 1)
+            # Pack newest first under pressure; serialize retained events chronologically.
+            unique = window.sort_values(["timestamp", "movieId"], ascending=False)
+        else:
+            raise ValueError(f"Unknown context strategy: {strategy}")
         if unconstrained:
             task = ("Recommend exactly 10 movie titles in predicted preference order. "
                     "No catalog or candidate list is supplied. Use the exact full title "
@@ -72,8 +81,9 @@ class Verbalizer:
         prefix = f"Context: next-movie prediction; time={as_of} (Unix seconds).\nHistory:\n"
 
         def messages(lines):
+            ordered = list(reversed(lines)) if strategy == "plain_recent" else lines
             return [{"role": "system", "content": SYSTEM}, {"role": "user", "content":
-                    prefix + ("\n".join(lines) if lines else "No high-signal events retained.")
+                    prefix + ("\n".join(ordered) if ordered else "No high-signal events retained.")
                     + "\n\n" + task}]
 
         if self.tokens(messages([])) > self.budget:
