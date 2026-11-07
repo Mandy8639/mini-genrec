@@ -1,0 +1,10 @@
+{
+  "nvidia/nemotron-3.5-super-vl:free": {
+    "history_length": null,
+    "reason": "Requires all four measured LLM conditions without errors."
+  },
+  "dots-studio/dots-3-note-preview:free": {
+    "history_length": null,
+    "reason": "Requires all four measured LLM conditions without errors."
+  }
+}

@@ -11,7 +11,7 @@ import unittest
 from unittest.mock import patch
 
 import httpx
-from openai import OpenAI, APITimeoutError
+from openai import OpenAI, APITimeoutError, BadRequestError
 import pandas as pd
 
 from mini_genrec.baseline import Baseline, random_rank
@@ -102,6 +102,24 @@ class ContextAndDiagnosticTests(unittest.TestCase):
         row = evaluate_llm(Timeout(), None, common, dataset, case, "mini-genrec")
         self.assertEqual(row["error_category"], "timeout")
 
+    def test_provider_rejection_counts_as_a_miss_without_exposing_provider_body(self):
+        class Rejected:
+            backend = "openrouter"
+
+            def call(self, prompt):
+                body = {"message": "Provider returned error", "metadata": {
+                    "provider_name": "test-provider", "raw": "private-provider-diagnostic"}}
+                raise BadRequestError("provider response", body=body, response=httpx.Response(
+                    400, request=httpx.Request("POST", "https://mock.invalid")))
+
+        dataset = Dataset(self.movies, pd.DataFrame(), [], {1}, {})
+        case = Case(1, 2, 40, self.history, [1, 2])
+        row = evaluate_llm(Rejected(), None, {}, dataset, case, "mini-genrec")
+        self.assertEqual((row["error_category"], row["http_status"], row["rr"], row["candidate_coverage"]),
+                         ("provider_rejection", 400, 0, 0))
+        self.assertEqual(row["ranking"], [])
+        self.assertNotIn("private-provider-diagnostic", json.dumps(row))
+
 
 @unittest.skipUnless((ROOT / "data/ml-latest-small/ratings.csv").exists(), "download MovieLens first")
 class FrozenRunnerTests(unittest.TestCase):
@@ -191,6 +209,18 @@ class FrozenRunnerTests(unittest.TestCase):
             self.assertTrue((constrained.errors == 0).all())
             self.assertEqual(set(summary.view), {"main", "context", "unconstrained", "elbow"})
             self.assertEqual(json.loads((out/"status.json").read_text())["status"], "complete")
+            from mini_genrec.analysis import analyze, archive_responses
+            archived = archive_responses(out, Path(args.cache_dir))
+            self.assertEqual(archived["missing_hashes"], [])
+            self.assertTrue(archived["responses"])
+            paired = analyze(out, samples=1000)
+            self.assertEqual(len(paired), 2)
+            self.assertTrue((out/"analysis.md").exists())
+            saved_rows = json.loads((out/"per_user.json").read_text())
+            saved_rows[0]["rr"] = .99
+            (out/"per_user.json").write_text(json.dumps(saved_rows))
+            with self.assertRaisesRegex(ValueError, "Persisted metrics"):
+                analyze(out, samples=1000)
             args.limit_users = 2
             with self.assertRaisesRegex(ValueError, "different experiment"):
                 run(args)

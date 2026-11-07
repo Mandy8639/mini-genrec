@@ -211,6 +211,21 @@ def evaluate_llm(llm, prompt, common, dataset, case, ranker) -> dict:
             row["candidate_coverage"] = len(validated.ranking) / len(case.candidates)
     except (AuthenticationError, BadRequestError, NotFoundError, PermissionDeniedError,
             UnprocessableEntityError) as error:
+        body = error.body
+        upstream_rejection = (getattr(llm, "backend", None) == "openrouter"
+                              and isinstance(error, (BadRequestError, UnprocessableEntityError))
+                              and isinstance(body, dict)
+                              and body.get("message") == "Provider returned error"
+                              and isinstance(body.get("metadata"), dict)
+                              and bool(body["metadata"].get("provider_name")))
+        if upstream_rejection:
+            # A provider can reject one otherwise valid input. Keep it in the denominator.
+            # Do not store the upstream body, which may contain sensitive metadata.
+            row.update(error=type(error).__name__, error_category="provider_rejection",
+                       http_status=error.status_code,
+                       candidate_coverage=None if ranker == "unconstrained" else 0.0)
+            row.update(metrics(row["ranking"], case.target, dataset.popular))
+            return row
         # Stop on invalid credentials/model/schema rather than issuing repeated billable calls.
         category = ("authentication" if isinstance(error, AuthenticationError) else
                     "permission" if isinstance(error, PermissionDeniedError) else
