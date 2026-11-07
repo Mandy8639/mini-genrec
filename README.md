@@ -6,7 +6,19 @@ Netflix trains a foundation model and a catalog scoring head together, then scor
 
 ## Main result
 
-**Keep the popularity + item-CF baseline as the default.** On the same 34 MovieLens users and 50 candidates per user, Dots reranking of the baseline's top 20 raised MRR from **0.2220 to 0.2486**, while Hit@10 fell from **50.0% to 44.1%**. The paired 95% bootstrap interval for the Hit@10 change ran from −20.6 to +11.8 percentage points. The shortlist included the held-out movie for 24 of 34 users, with no targets inserted. This small, exploratory comparison missed the predeclared Hit@10 threshold for adopting the reranker. [Reranking report](results/shortlist/report.md)
+The frozen head-to-head evaluation used the same 34 MovieLens users, a 20-event history window, and 50 candidates per user.
+
+| Ranker | MRR | Hit@10 |
+|---|---:|---:|
+| Popularity + item-CF baseline | 0.2220 | 50.0% |
+| `nvidia/nemotron-3.5-super-vl:free` | 0.2464 | 38.2% |
+| `dots-studio/dots-3-note-preview:free` | 0.2358 | 35.3% |
+
+Both LLMs had slightly higher observed MRR and lower Hit@10 than the hybrid baseline. The paired 95% bootstrap intervals for both metrics crossed zero for each model versus the baseline. **The hybrid baseline stays the default.** [Frozen metrics](results/frozen-evaluation/metrics.csv) · [Paired comparisons](results/frozen-evaluation/paired_comparisons.csv)
+
+### Shortlist reranking experiment
+
+In a separate experiment on the same users and candidate sets, Dots reranked the baseline's top 20. MRR rose from **0.2220 to 0.2486**, while Hit@10 fell from **50.0% to 44.1%**. The paired 95% bootstrap interval for the Hit@10 change ran from −20.6 to +11.8 percentage points. The shortlist included the held-out movie for 24 of 34 users, with no targets inserted. This small, exploratory comparison missed the predeclared Hit@10 threshold for adopting the reranker. [Reranking report](results/shortlist/report.md)
 
 ## Reproduce without an API key
 
@@ -102,7 +114,7 @@ These are measured finite-sample results, including the single prespecified rand
 6. Baseline: 80% normalized item-CF affinity plus 20% log popularity; cosine similarities use positive (4+ star) interactions and overlap shrinkage.
 7. Verbalize the last 5, 10, 20 or 50 catalog ratings with titles, stars, genres and relative age. Ratings are proxies, not verified watches.
 8. Omit neutral (2.5–3.5 star) ratings, compress repeated movie ratings, prioritize strong preferences, and pack events within a token budget.
-9. Ask `gpt-4o-mini` (configurable) to order exact candidate titles; drop unknown, ambiguous, noncandidate and duplicate titles without backfilling.
+9. Ask the model to order exact candidate titles. Drop unknown, ambiguous, noncandidate and duplicate titles without backfilling. The frozen evaluation used the free OpenRouter models `nvidia/nemotron-3.5-super-vl:free` and `dots-studio/dots-3-note-preview:free`. The OpenAI backend defaults to the configurable `gpt-4o-mini` and made zero calls in the checked-in runs.
 10. Measure MRR, Hit@10, popularity share and hallucinations; run one free-catalog probe per user and plot quality against input tokens.
 
 ## Run
@@ -173,7 +185,7 @@ The default API experiment makes **100 logical requests per model**: 20 users ×
 
 - **MRR** averages the reciprocal target rank; absent targets get 0. **Hit@10** averages target membership in the first 10 unique valid results. All requested users remain in these denominators, including failures.
 - **Catalog** means the selected MovieLens subset, not all movies ever made. Hallucination here is a membership error, not proof a title is fictional. Free-catalog recommendations get no candidate list: `outside_catalog_rate` is unmatched raw titles / all returned title strings. Exact matching allows Unicode/case/whitespace normalization, but requires the year and MovieLens's title wording; aliases can inflate the measured rate.
-- The constrained run also reports **outside-candidate rate** (including real catalog movies outside the supplied 50). It uses structural [OpenAI Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs), with **no title enum** in the schema. Candidate membership is validated independently in Python. The unconstrained probe keeps the same JSON structure but removes the candidate list and catalog instruction.
+- The constrained run also reports **outside-candidate rate** (including real catalog movies outside the supplied 50). It requests JSON-schema structured outputs through the configured backend, with **no title enum** in the schema. Candidate membership is validated independently in Python. The unconstrained probe keeps the same JSON structure but removes the candidate list and catalog instruction.
 - **Popularity bias** is the micro-averaged fraction of valid top-10 results in the most-rated 10% of catalog movies, using training counts. Report slot coverage alongside it so short/empty rankings cannot conceal failures. Unmatched suggestions stay in hallucination denominators; duplicates are counted and removed. There is no candidate-filling fallback.
 - Histories may contain observations after the common training cutoff, but strictly before their own target. This is a frozen baseline with an updated user profile. All ties at the target timestamp are excluded from history; the largest movie ID breaks ties when choosing the latest target. Users whose actual latest movie is outside the catalog are excluded, never assigned an older substitute.
 - Uniform negatives and a small sample make this easier than full-catalog retrieval. Rated movies may be disliked; next-rating prediction is not satisfaction prediction. MovieLens and the LLM's possible prior knowledge of it do not represent Netflix traffic. No significance or superiority claim is justified by this demo.
